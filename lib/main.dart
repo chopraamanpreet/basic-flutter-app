@@ -8,8 +8,14 @@ void main() {
   );
 }
 
-class Fapp extends StatelessWidget {
+class Fapp extends StatefulWidget {
   // This widget is the root of your application.
+  @override
+  _FappState createState() => _FappState();
+}
+
+class _FappState extends State<Fapp> {
+  int ninjaLevel=0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,6 +26,16 @@ class Fapp extends StatelessWidget {
         elevation: 0.0,
         backgroundColor: Colors.pinkAccent,
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          setState((){
+            ninjaLevel +=1;
+          });
+        },
+        child: Icon(
+          Icons.add,
+        ),
+        ),
       body: Padding(
         padding: EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 0.0),
         child: Column(
@@ -64,7 +80,7 @@ class Fapp extends StatelessWidget {
           )
           ),
           Text(
-            '10',
+            '$ninjaLevel',
             style: TextStyle(
               color: Colors.amber,
               fontSize: 40.0,
